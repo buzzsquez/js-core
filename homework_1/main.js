@@ -1,23 +1,30 @@
-const a = Number(prompt("Введите первое значение"));
-const b = Number(prompt("Введите второе значение"));
+const ERROR_MESSAGE = 'Некорректный ввод!';
+const MIN_NUMERAL_SYSTEM_VALUE = 2;
+const MAX_NUMERAL_SYSTEM_VALUE = 36;
 
-if (isNaN(a) || isNaN(b) || !(b >= 2 && b <= 36)) {
-    console.log("Некорректный ввод!");
+const firstValue = Number(prompt('Введите первое значение'));
+const secondValue = Number(prompt('Введите второе значение'));
+
+if (isNaN(firstValue) || isNaN(secondValue)
+  || !(secondValue >= MIN_NUMERAL_SYSTEM_VALUE && secondValue <= MAX_NUMERAL_SYSTEM_VALUE)) {
+  console.log(ERROR_MESSAGE);
 } else {
-    console.log(+(a).toString(b));
+  console.log(+(firstValue).toString(secondValue));
 }
 
-//-----------------------------------------------------------
+// -----------------------------------------------------------
 
-const a = Number(prompt("Введите первое значение"));
+const ERROR_MESSAGE = 'Некорректный ввод!';
 
-if (isNaN(a) || a == '') {
-    console.log("Некорректный ввод!");
+const firstValue = Number(prompt('Введите первое значение'));
+
+if (isNaN(firstValue)) {
+  console.log(ERROR_MESSAGE);
 } else {
-    const b = Number(prompt("Введите второе значение"));
-    if (isNaN(b) || b == '') {
-        console.log("Некорректный ввод!");
-    } else {
-        console.log(`Ответ: ${a + b}, ${a / b}.`);
-    }
+  const secondValue = Number(prompt('Введите второе значение'));
+  if (isNaN(secondValue) || secondValue === 0) {
+    console.log(ERROR_MESSAGE);
+  } else {
+    console.log(`Ответ: ${firstValue + secondValue}, ${firstValue / secondValue}.`);
+  }
 }
