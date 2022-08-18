@@ -17,14 +17,6 @@ Array.prototype.myFilter = function (callbackFn, thisArg) {
   return result;
 };
 
-const arr = [1, 2, 3, , 5, 6, 7, , ,10];
-
-function isBigEnough(value) {
-  return value >= 3;
-}
-const result = arr.myFilter(isBigEnough)
-console.log(result)
-
 //----------------------------------------------------------------------------------
 
 function createDebounceFunction(callback, ms) {
