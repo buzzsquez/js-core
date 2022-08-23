@@ -6,6 +6,7 @@ function makeObjectDeepCopy(object) {
       clonedObject[key] = makeObjectDeepCopy(object[key]);
       continue;
     }
+    
     clonedObject[key] = object[key];
   }
 
