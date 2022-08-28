@@ -42,6 +42,7 @@ class Stack {
     }
 
     const deletedItem = this.items[this.count - 1];
+
     this.count--;
     delete this.items[this.count];
 
