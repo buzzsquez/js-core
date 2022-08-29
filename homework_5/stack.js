@@ -1,11 +1,17 @@
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+  }
+}
+
 class Stack {
   constructor(maxQuantity = 10) {
-    this.items = {};
-
     if (typeof maxQuantity !== 'number' || maxQuantity <= 0) {
       throw new Error('Quantity is not a valid number');
     }
 
+    this.top = null;
     this.maxQuantity = maxQuantity;
     this.count = 0;
   }
@@ -32,7 +38,10 @@ class Stack {
       throw new Error('Stack is full');
     }
 
-    this.items[this.count] = elem;
+    const newNode = new Node(elem);
+
+    newNode.next = this.top;
+    this.top = newNode;
     this.count++;
   }
 
@@ -41,20 +50,23 @@ class Stack {
       throw new Error('Stack is empty');
     }
 
-    const deletedItem = this.items[this.count - 1];
+    if (this.top !== null) {
+      const topItem = this.top.data;
+      this.top = this.top.next;
+      this.count--;
 
-    this.count--;
-    delete this.items[this.count];
+      return topItem;
+    }
 
-    return deletedItem;
+    return null;
   }
 
   peek() {
-    if (this.count === 0) {
+    if (this.top === null) {
       return null;
     }
 
-    return this.items[this.count - 1];
+    return this.top.data;
   }
 
   isEmpty() {
@@ -62,7 +74,19 @@ class Stack {
   }
 
   toArray() {
-    return Object.values(this.items);
+    if (this.top === null) {
+      return null;
+    }
+
+    const arr = [];
+    let current = this.top;
+
+    for (let i = 0; i < this.count; i++) {
+      arr[i] = current.data;
+      current = current.next;
+    }
+
+    return arr.reverse();
   }
 }
 
