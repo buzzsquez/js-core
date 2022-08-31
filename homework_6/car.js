@@ -116,11 +116,11 @@ class Car {
       throw new Error('Машины не существует');
     } else if (!isFuelEnough) {
       throw new Error('Топливный бак пуст');
+    } else {
+      this.#isStarted = true;
+  
+      return this.#isStarted;
     }
-
-    this.#isStarted = true;
-
-    return this.#isStarted;
   }
 
   shutDownEngine() {
